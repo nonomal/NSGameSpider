@@ -12,15 +12,15 @@ jobs:
     runs-on: ubuntu-latest #运行环境
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: 'Git set'
         run: |
              git init
              git pull
       - name: 'Set up Python'
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
-           python-version: 3.7 #v3
+           python-version: 3.12.8 #v3
       - name: 'Install requirements'
         run: |
              pip install wget
@@ -34,9 +34,10 @@ jobs:
 
       - name: Commit files
         run: |
+          tree -a
           git diff
-          git config --local user.email "hyh20060327@qq.com"
-          git config --local user.name "RavelloH"
+          git config --local user.email "dr_hamilton@foxmail.com"
+          git config --local user.name "Ravello-H"
           git add -A
           git commit -m "`date '+%Y-%m-%d %H:%M:%S'`" || exit #动态提交信息
           git status
